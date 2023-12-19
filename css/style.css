@@ -2,6 +2,8 @@
 :root {
     --main-color: #2196f3;
     --main-color-alt: #1787e0;
+    --sec-color: #666;
+    --sec-color-alt: #ececec;
     --main-transition: 0.3s;
 }
 /* End Variables */
@@ -97,6 +99,82 @@ ul {
     box-shadow: 0 0 10px #ddd;
     position: relative;
 }
+.header .mega-menu {
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 50px);
+    left: 0;
+    background: white;
+    border-bottom: 3px solid var(--main-color);
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: var(--main-transition);
+}
+
+.header .mega-menu .image {
+    width: 400px;
+    text-align: center;
+}
+.header .mega-menu .image img {
+    max-width: 100%;
+}
+@media (max-width: 991px) {
+    .header .mega-menu .image {
+        display: none;
+    }
+}
+.header .mega-menu .links {
+    min-width: 220px;
+}
+@media (max-width: 991px) {
+    .header .mega-menu .links {
+        flex: 1;
+    }
+}
+@media (max-width: 767px) {
+    .header .mega-menu {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+.header .mega-menu .links li {
+    position: relative;
+}
+.header .mega-menu .links li::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background-color: #fafafa;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    transition: var(--main-transition);
+}
+.header .mega-menu .links li:hover::before {
+    width: 100%;
+}
+.header .mega-menu .links li:not(:first-child :last-child) {
+    border-bottom: 2px solid #eee;
+}
+@media (max-width: 767px) {
+    .header .mega-menu .links li:last-child {
+        border-bottom: 2px solid #eee;
+    }
+}
+.header .mega-menu .links a {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--main-color);
+    display: block;
+    padding: 18px;
+}
+.header .mega-menu i {
+    margin-right: 10px;
+}
 .header .container {
     display: flex;
     justify-content: space-between;
@@ -126,7 +204,13 @@ ul {
 @media (max-width: 767px) {
     .header  .main-nav {
         margin: auto;
+        height: 40px;
     }
+}
+.header .main-nav li:hover .mega-menu {
+    opacity: 1;
+    z-index: 100;
+    top: calc(100% + 1px);
 }
 .header  .main-nav > li > a {
     color: black;
@@ -166,3 +250,108 @@ ul {
     left: 0;
 }
 /* End Header */
+/* Start Landing */
+.landing {
+    height: calc(100vh - 72px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: -1;
+}
+.landing::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--sec-color-alt);
+    transform: skewY(-5deg);
+    transform-origin: top left;
+    top: -40px;
+}
+.landing .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+@media (max-width: 991px) {
+    .landing .container {
+        justify-content: center;
+    }
+}
+
+.landing .container img {
+    max-width: 600px;
+    transition: var(--main-transition);
+    animation-name: infinity-img;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    position: relative;
+    animation-timing-function: linear;
+}
+@media (max-width: 991px) {
+    .landing .container img {
+        display: none;
+    }
+}
+.landing a.arrow-down {
+    z-index: 1;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--main-color);
+    animation: bouncing 2s linear infinite;
+}
+.landing .text {
+    max-width: 500px;
+}
+@media (max-width: 991px) {
+    .landing .text {
+        text-align: center;
+    }
+}
+.landing .text h1 {
+    font-size: 40px;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .landing .text h1 {
+        font-size: 30px;
+    }
+}
+.landing .text p {
+    font-size: 23px;
+    color: var(--sec-color);
+    line-height: 1.7;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .landing .text p {
+        font-size: 20px;
+    }
+}
+/* End Landing */
+/*Start Animation*/
+@keyframes infinity-img {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -70px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+@keyframes bouncing {
+    0%, 10%, 20%, 50%, 80%, 90%, 100% {
+        bottom: 25px;
+    }
+    30%, 40%, 70%{
+        bottom: 35px;
+    }
+}
+/* End Animation */
