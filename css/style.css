@@ -5,6 +5,8 @@
     --sec-color: #666;
     --sec-color-alt: #ececec;
     --main-transition: 0.3s;
+    --main-padding-top: 100px;
+    --main-padding-bottom: 100px;
 }
 /* End Variables */
 /*Start Fonts*/
@@ -334,39 +336,17 @@ ul {
     }
 }
 /* End Landing */
-/*Start Animation*/
-@keyframes infinity-img {
-    0% {
-        top: 0;
-    }
-    50% {
-        top: -70px;
-    }
-    100% {
-        top: 0px;
-    }
-}
-@keyframes bouncing {
-    0%, 10%, 20%, 50%, 80%, 90%, 100% {
-        bottom: 25px;
-    }
-    30%, 40%, 70%{
-        bottom: 35px;
-    }
-}
-/* End Animation */
 /* Start Main Title */
 .main-title {
-    position: relative;
-    text-align: center;
-    padding: 10px 20px;
-    border: 1px solid;
-    width: fit-content;
-    margin: 100px auto;
-    font-size: 30px;
     text-transform: uppercase;
-    transition: 0.5s;
-    animation-delay: 3s;
+    margin: 0 auto 80px;
+    border: 2px solid;
+    padding: 10px 20px;
+    font-size: 30px;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+    transition: var(--main-transition);
 }
 .main-title::before,
 .main-title::after {
@@ -398,6 +378,128 @@ ul {
     color: white;
     border: 2px solid white;
 }
+/* End Main Title */
+/*Start Articles*/
+.articles {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+}
+.articles .main-title {
+    margin-bottom: 60px;
+}
+
+.articles .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
+    
+}
+.articles .box {
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: white;
+    transition: transform var(--main-transition), box-shadow var(--main-transition);
+}
+.articles .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
+
+}
+.articles .box img {
+    max-width: 100%;
+}
+.articles .box .content {
+    padding: 20px;
+}
+.articles .box .content h3 {
+    margin: 0;
+}
+.articles .box .content p {
+    margin: 10px 0 0;
+    line-height: 1.5;
+    color: #777;
+}
+.articles .box .info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e6e6e7;
+}
+.articles .box .info a,
+.articles .box .info i {
+    color: var(--main-color);
+    font-weight: bold;
+}
+.articles .box:hover .info i {
+    animation: moving-arrow 0.6s infinite;
+}
+/*End Articles*/
+/*Start Gallery*/
+.gallery {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+    background-color: var(--sec-color-alt);
+    position: relative;
+}
+.gallery .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+.gallery .box {
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+}
+.gallery .box .image {
+    position: relative;
+    overflow: hidden;
+}
+.gallery .box .image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255 255 255 / 20%);
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: 2;
+}
+.gallery .box .image:hover::before {
+    animation: flashing 0.7s;
+}
+.gallery .box img {
+    max-width: 100%;
+    transition: var(--main-transition);
+}
+.gallery .box .image:hover img {
+    transform: rotate(5deg) scale(1.1);
+}
+/*End Gallery*/
+/*Start Animation*/
+@keyframes infinity-img {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: -70px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+@keyframes bouncing {
+    0%, 10%, 20%, 50%, 80%, 90%, 100% {
+        bottom: 25px;
+    }
+    30%, 40%, 70%{
+        bottom: 35px;
+    }
+}
 @keyframes left-move {
     50% {
         left: 1px;
@@ -424,5 +526,19 @@ ul {
         border-radius: 0;
     }
 }
-/* End Main Title */
-
+@keyframes moving-arrow {
+    100% {
+        transform: translateX(10px);
+    }
+}
+@keyframes flashing {
+    0%, 40% {
+        opacity: 1;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
+}
+/* End Animation */
