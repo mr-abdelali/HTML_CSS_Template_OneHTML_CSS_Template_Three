@@ -355,3 +355,74 @@ ul {
     }
 }
 /* End Animation */
+/* Start Main Title */
+.main-title {
+    position: relative;
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid;
+    width: fit-content;
+    margin: 100px auto;
+    font-size: 30px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    animation-delay: 3s;
+}
+.main-title::before,
+.main-title::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    top: 50%;
+    transform: translateY(-50%);
+}
+.main-title::before {
+    left: -30px;
+}
+.main-title::after {
+    right: -30px;
+}
+.main-title:hover::before {
+    z-index: -1;
+    animation: left-move 0.5s linear forwards;
+}
+.main-title:hover::after {
+    z-index: -1;
+    animation: right-move 0.5s linear forwards;
+}
+.main-title:hover {
+    transition-delay: 0.5s;
+    color: white;
+    border: 2px solid white;
+}
+@keyframes left-move {
+    50% {
+        left: 1px;
+        width: 10px;
+        height: 10px;
+    }
+    100% {
+        left: 1px;
+        width: 50%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes right-move {
+    50% {
+        right: 1px;
+        width: 12px;
+        height: 12px;
+    }
+    100% {
+        right: 1px;
+        width: 50%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+/* End Main Title */
+
