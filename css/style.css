@@ -640,10 +640,7 @@ ul {
     color: var(--sec-color);
     padding: 0px 0 10px;
 }
-.testimonials .box .rate {
-    
-}
-.testimonials .box .rate i {
+.testimonials .box .rate .filled {
     color: #ffc107;
     padding: 0px 0 10px;
 }
@@ -651,6 +648,96 @@ ul {
     color: var(--sec-color);
     line-height: 1.7;
 }
+
+/*Start Team Members*/
+.team {
+    padding-top: var(--main-padding-top);
+    padding-bottom: var(--main-padding-bottom);
+}
+.team .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    row-gap: 110px;
+    column-gap: 30px;
+}
+.team .box {
+    position: relative;
+    transition: var(--main-transition);
+}
+.team .box::before,
+.team .box::after {
+    transition: var(--main-transition);
+    content: '';
+    position: absolute;
+    width: calc(100% - 60px);
+    height: calc(100% + 80px);
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    z-index: -1;
+    top: -50px;
+    right: 0px;
+}
+.team .box::before {
+    height: calc(100% + 80px);
+    z-index: -2;
+}
+.team .box::after {
+    width: 0;
+    background-color: #e4e4e4;
+    z-index: -2;
+}
+.team .box:hover::after {
+    filter: grayscale(100%);
+    width: calc(100% - 60px);
+}
+.team .box:hover {
+    filter: grayscale(100%);
+}
+.team .box .data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.team .box .data img {
+    max-width: calc(100% - 80px);
+    border-radius: 10px;
+}
+.team .box .data .social {
+    display: flex;
+    flex-direction: column;
+    min-width: 60px;
+    align-items: center;
+    
+}
+.team .box .data .social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 40px;
+}
+.team .box .data .social i {
+    color: #777;
+    transition: var(--main-transition);
+}
+.team .box .data .social a:hover i {
+    color: var(--main-color);
+}
+.team .box .info {
+    padding-left: 80px;
+}
+.team .box .info h3 {
+    color: var(--main-color);
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.team .box .info p {
+    color: #444;
+    text-transform: capitalize;
+}
+/*End Team Members*/
 /* End Testimonials */
 /*Start Animation*/
 @keyframes infinity-img {
